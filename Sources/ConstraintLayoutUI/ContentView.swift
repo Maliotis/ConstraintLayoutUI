@@ -10,19 +10,19 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct ContentView: View {
     
-    @State var topConstraintButtonPressed = false
+    @State public var topConstraintButtonPressed = false
     // Override this method to handle the buttons onClick
-    var topConstraintButtonHandler: (Bool) -> Void = {_ in }
+    public var topConstraintButtonHandler: (Bool) -> Void = {_ in }
     
-    @State var leftConstraintButtonPressed = false
+    @State public var leftConstraintButtonPressed = false
     // Override this method to handle the buttons onClick
-    var leftConstraintButtonHandler: (Bool) -> Void = {_ in }
+    public var leftConstraintButtonHandler: (Bool) -> Void = {_ in }
     
-    @State var bottomConstraintButtonPressed = false
+    @State public var bottomConstraintButtonPressed = false
     // Override this method to handle the buttons onClick
-    var bottomConstraintButtonHandler: (Bool) -> Void = {_ in }
+    public var bottomConstraintButtonHandler: (Bool) -> Void = {_ in }
     
-    @State var rightConstraintButtonPressed = false
+    @State public var rightConstraintButtonPressed = false
     // Override this method to handle the buttons onClick
     public var rightConstraintButtonHandler: (Bool) -> Void = {_ in }
     
