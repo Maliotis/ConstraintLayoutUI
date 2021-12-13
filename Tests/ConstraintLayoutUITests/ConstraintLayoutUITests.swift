@@ -7,6 +7,6 @@ final class ConstraintLayoutUITests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(ConstraintLayoutUI().text, "Hello, World!")
+        //XCTAssertEqual(ConstraintLayoutUI().text, "Hello, World!")
     }
 }

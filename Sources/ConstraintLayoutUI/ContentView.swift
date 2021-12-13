@@ -24,23 +24,24 @@ public struct ContentView: View {
     
     @State var rightConstraintButtonPressed = false
     // Override this method to handle the buttons onClick
-    var rightConstraintButtonHandler: (Bool) -> Void = {_ in }
+    public var rightConstraintButtonHandler: (Bool) -> Void = {_ in }
     
     //
-    var paddingForHorizontalDropDowns: CGFloat = 3.5
+    public var paddingForHorizontalDropDowns: CGFloat = 3.5
     
     // data - overwrite the demo values
-    var constraintData = createConstraintData()
-    var viewData = createViewData()
-    var decimalData = createDecimalData()
+    @EnvironmentObject public var dataStore: DataStore
+//    @Published public var constraintData: [String] = createConstraintData()
+//    @Published public var viewData = createViewData()
+//    @Published public var decimalData = createDecimalData()
     
     public var body: some View {
         VStack(alignment: .center, spacing: 2) {
             
             VStack(alignment: .trailing) {
-                SpacingView(value: "top", numeric: false, placeholder: "constraint", dropDownList: constraintData)
-                SpacingView(value: "parent", numeric: false, placeholder: "view", dropDownList: viewData)
-                SpacingView(value: "0", numeric: true, placeholder: "Top", dropDownList: decimalData)
+                SpacingView(value: "top", numeric: false, placeholder: "constraint", dropDownList: dataStore.constraintData)
+                SpacingView(value: "parent", numeric: false, placeholder: "view", dropDownList: dataStore.viewData)
+                SpacingView(value: "0", numeric: true, placeholder: "Top", dropDownList: dataStore.decimalData)
                                     
                 
             }.frame(minWidth: 50, maxWidth: 70, minHeight: 20, maxHeight: 60)
@@ -59,11 +60,11 @@ public struct ContentView: View {
             
             HStack(alignment: .center, spacing: 2) {
 //                Spacer(minLength: 4)
-                SpacingView(value: "left", numeric: false, placeholder: "constraint", dropDownList: constraintData)
+                SpacingView(value: "left", numeric: false, placeholder: "constraint", dropDownList: dataStore.constraintData)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
-                SpacingView(value: "parent", numeric: false, placeholder: "view", dropDownList: viewData)
+                SpacingView(value: "parent", numeric: false, placeholder: "view", dropDownList: dataStore.viewData)
                     .padding([.leading], paddingForHorizontalDropDowns)
-                SpacingView(value: "0", numeric: true, placeholder: "left", dropDownList: decimalData)
+                SpacingView(value: "0", numeric: true, placeholder: "left", dropDownList: dataStore.decimalData)
                     .padding(.trailing, 7)
                 Button {
                     leftConstraintButtonPressed = !leftConstraintButtonPressed
@@ -91,12 +92,12 @@ public struct ContentView: View {
                     }
                 }
                 
-                SpacingView(value: "0", numeric: true, placeholder: "right", dropDownList: decimalData)
+                SpacingView(value: "0", numeric: true, placeholder: "right", dropDownList: dataStore.decimalData)
                 
-                SpacingView(value: "parent", numeric: false, placeholder: "view", dropDownList: viewData)
+                SpacingView(value: "parent", numeric: false, placeholder: "view", dropDownList: dataStore.viewData)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
                 
-                SpacingView(value: "right", numeric: false, placeholder: "constraint", dropDownList: constraintData)
+                SpacingView(value: "right", numeric: false, placeholder: "constraint", dropDownList: dataStore.constraintData)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
                 Spacer()
                     .frame(width: 1, height: 10)
@@ -119,9 +120,9 @@ public struct ContentView: View {
             
             VStack(alignment: .trailing) {
                 
-                SpacingView(value: "0", numeric: true, placeholder: "bottom", dropDownList: decimalData)
-                SpacingView(value: "parent", numeric: false, placeholder: "view", dropDownList: viewData)
-                SpacingView(value: "bottom", numeric: false, placeholder: "constraint", dropDownList: constraintData)
+                SpacingView(value: "0", numeric: true, placeholder: "bottom", dropDownList: dataStore.decimalData)
+                SpacingView(value: "parent", numeric: false, placeholder: "view", dropDownList: dataStore.viewData)
+                SpacingView(value: "bottom", numeric: false, placeholder: "constraint", dropDownList: dataStore.constraintData)
                                
             }.frame(minWidth: 50, maxWidth: 70, minHeight: 20, maxHeight: 60)
         }
