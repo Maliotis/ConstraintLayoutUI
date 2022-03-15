@@ -12,7 +12,7 @@ import SwiftUI
 @available(iOS 14.0, *)
 struct SpacingView: View {
     
-    @State var value: String = ""
+    @Binding var value: String
     var numeric = false
     var placeholder = ""
     var dropDownList: [String] = createDecimalData()
@@ -79,8 +79,9 @@ struct SpacingView: View {
 }
 
 @available(iOS 14.0, *)
-struct SpacingView_Previews: PreviewProvider {    
+struct SpacingView_Previews: PreviewProvider {
+    @State static var test = "0.0"
     static var previews: some View {
-        SpacingView()
+        SpacingView(value: $test)
     }
 }

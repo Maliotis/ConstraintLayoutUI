@@ -26,9 +26,11 @@ struct NumericTextField: View {
     }
 }
 
-//struct NumericTextField_Previews: PreviewProvider {
-//    //@State var test = "0"
-//    static var previews: some View {
-//        //NumericTextField(value: $test)
-//    }
-//}
+
+@available(iOS 14.0, *)
+struct NumericTextField_Previews: PreviewProvider {
+    @State static var test = "0.0"
+    static var previews: some View {
+        NumericTextField(value: $test)
+    }
+}
