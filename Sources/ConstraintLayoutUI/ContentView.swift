@@ -10,95 +10,64 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct ContentView: View {
     
-    @State public var topConstraintButtonPressed = false
+    @ObservedObject public var constraint: Constraint = Constraint()
+        
     // Override this method to handle the buttons onClick
     public var topConstraintButtonHandler: (Bool) -> Void = {_ in }
-    
-    @State public var leftConstraintButtonPressed = false
+        
     // Override this method to handle the buttons onClick
     public var leftConstraintButtonHandler: (Bool) -> Void = {_ in }
-    
-    @State public var bottomConstraintButtonPressed = false
+        
     // Override this method to handle the buttons onClick
     public var bottomConstraintButtonHandler: (Bool) -> Void = {_ in }
-    
-    @State public var rightConstraintButtonPressed = false
+        
     // Override this method to handle the buttons onClick
     public var rightConstraintButtonHandler: (Bool) -> Void = {_ in }
     
     // add listeners for dropDown values change
-    
-    // top value
-    @State public var topConstraintValue = "0"
+            
     public var topConstraintValueChanged:(String) -> Void = {_ in }
-    
-    // left value
-    @State public var leftConstraintValue = "0"
+        
     public var leftConstraintValueChanged:(String) -> Void = {_ in }
-    
-    // right value
-    @State public var rightConstraintValue = "0"
+        
     public var rightConstraintValueChanged:(String) -> Void = {_ in }
-    
-    // bottom value
-    @State public var bottomConstraintValue = "0"
+        
     public var bottomConstraintValueChanged:(String) -> Void = {_ in }
     
-    // top view value
-    @State public var topConstraintView = "parent"
     public var topConstraintViewChanged:(String) -> Void = {_ in }
     
-    // left view value
-    @State public var leftConstraintView = "parent"
     public var leftConstraintViewChanged:(String) -> Void = {_ in }
-    
-    // right view value
-    @State public var rightConstraintView = "parent"
+        
     public var rightConstraintViewChanged:(String) -> Void = {_ in }
-    
-    // bottom view value
-    @State public var bottomConstraintView = "parent"
+        
     public var bottomConstraintViewChanged:(String) -> Void = {_ in }
-    
-    // top edge value
-    @State public var topConstraintEdge = "top"
+        
     public var topConstraintEdgeChanged:(String) -> Void = {_ in }
-    
-    // left edge value
-    @State public var leftConstraintEdge = "left"
+        
     public var leftConstraintEdgeChanged:(String) -> Void = {_ in }
-    
-    // right edge value
-    @State public var rightConstraintEdge = "right"
+        
     public var rightConstraintEdgeChanged:(String) -> Void = {_ in }
-    
-    // bottom edge value
-    @State public var bottomConstraintEdge = "bottom"
+        
     public var bottomConstraintEdgeChanged:(String) -> Void = {_ in }
     
     //
     public var paddingForHorizontalDropDowns: CGFloat = 3.5
     
-    // data - overwrite the demo values
-    @State public var constraintData: [String] = createConstraintData()
-    @State public var viewData: [String] = createViewData()
-    @State public var decimalData: [String] = createDecimalData()
-    
     public var body: some View {
         VStack(alignment: .center, spacing: 2) {
             
             VStack(alignment: .trailing) {
-                SpacingView(value: $topConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraintData).onChange(of: topConstraintEdge, perform: topConstraintEdgeChanged)
-                SpacingView(value: $topConstraintView, numeric: false, placeholder: "view", dropDownList: viewData).onChange(of: topConstraintView, perform: topConstraintViewChanged)
-                SpacingView(value: $topConstraintValue, numeric: true, placeholder: "Top", dropDownList: decimalData).onChange(of: topConstraintValue, perform: topConstraintValueChanged)
+                SpacingView(value: $constraint.topConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraint.constraintData).onChange(of: constraint.topConstraintEdge, perform: topConstraintEdgeChanged)
+                SpacingView(value: $constraint.topConstraintView, numeric: false, placeholder: "view", dropDownList: constraint.viewData).onChange(of: constraint.topConstraintView, perform: topConstraintViewChanged)
+                SpacingView(value: $constraint.topConstraintValue, numeric: true, placeholder: "Top", dropDownList: constraint.decimalData).onChange(of: constraint.topConstraintValue, perform: topConstraintValueChanged)
                 
             }.frame(minWidth: 50, maxWidth: 70, minHeight: 20, maxHeight: 60)
             
             Button {
-                topConstraintButtonPressed = !topConstraintButtonPressed
-                topConstraintButtonHandler(topConstraintButtonPressed)
+                constraint.topConstraintButtonPressed = !constraint.topConstraintButtonPressed
+                topConstraintButtonHandler(constraint.topConstraintButtonPressed)
             } label: {
-                if topConstraintButtonPressed {
+                if constraint.topConstraintButtonPressed {
                     verticalLineImage()
                 } else {
                     verticalLineImage()
@@ -108,20 +77,20 @@ public struct ContentView: View {
             
             HStack(alignment: .center, spacing: 2) {
 //                Spacer(minLength: 4)
-                SpacingView(value: $leftConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraintData)
-                    .onChange(of: leftConstraintEdge, perform: leftConstraintEdgeChanged)
+                SpacingView(value: $constraint.leftConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraint.constraintData)
+                    .onChange(of: constraint.leftConstraintEdge, perform: leftConstraintEdgeChanged)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
-                SpacingView(value: $leftConstraintView, numeric: false, placeholder: "view", dropDownList: viewData)
-                    .onChange(of: leftConstraintView, perform: leftConstraintViewChanged)
+                SpacingView(value: $constraint.leftConstraintView, numeric: false, placeholder: "view", dropDownList: constraint.viewData)
+                    .onChange(of: constraint.leftConstraintView, perform: leftConstraintViewChanged)
                     .padding([.leading], paddingForHorizontalDropDowns)
-                SpacingView(value: $leftConstraintValue, numeric: true, placeholder: "left", dropDownList: decimalData)
-                    .onChange(of: leftConstraintValue, perform: leftConstraintValueChanged)
+                SpacingView(value: $constraint.leftConstraintValue, numeric: true, placeholder: "left", dropDownList: constraint.decimalData)
+                    .onChange(of: constraint.leftConstraintValue, perform: leftConstraintValueChanged)
                     .padding(.trailing, 7)
                 Button {
-                    leftConstraintButtonPressed = !leftConstraintButtonPressed
-                    leftConstraintButtonHandler(leftConstraintButtonPressed)
+                    constraint.leftConstraintButtonPressed = !constraint.leftConstraintButtonPressed
+                    leftConstraintButtonHandler(constraint.leftConstraintButtonPressed)
                 } label: {
-                    if leftConstraintButtonPressed {
+                    if constraint.leftConstraintButtonPressed {
                         horizLineImage()
                     } else {
                         horizLineImage()
@@ -132,10 +101,10 @@ public struct ContentView: View {
                 Image(systemName: "square")
                 
                 Button {
-                    rightConstraintButtonPressed = !rightConstraintButtonPressed
-                    rightConstraintButtonHandler(rightConstraintButtonPressed)
+                    constraint.rightConstraintButtonPressed = !constraint.rightConstraintButtonPressed
+                    rightConstraintButtonHandler(constraint.rightConstraintButtonPressed)
                 } label: {
-                    if rightConstraintButtonPressed {
+                    if constraint.rightConstraintButtonPressed {
                         horizLineImage()
                     } else {
                         horizLineImage()
@@ -143,15 +112,15 @@ public struct ContentView: View {
                     }
                 }
                 
-                SpacingView(value: $rightConstraintValue, numeric: true, placeholder: "right", dropDownList: decimalData)
-                    .onChange(of: rightConstraintValue, perform: rightConstraintValueChanged)
+                SpacingView(value: $constraint.rightConstraintValue, numeric: true, placeholder: "right", dropDownList: constraint.decimalData)
+                    .onChange(of: constraint.rightConstraintValue, perform: rightConstraintValueChanged)
                 
-                SpacingView(value: $rightConstraintView, numeric: false, placeholder: "view", dropDownList: viewData)
-                    .onChange(of: rightConstraintView, perform: rightConstraintViewChanged)
+                SpacingView(value: $constraint.rightConstraintView, numeric: false, placeholder: "view", dropDownList: constraint.viewData)
+                    .onChange(of: constraint.rightConstraintView, perform: rightConstraintViewChanged)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
                 
-                SpacingView(value: $rightConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraintData)
-                    .onChange(of: rightConstraintEdge, perform: rightConstraintEdgeChanged)
+                SpacingView(value: $constraint.rightConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraint.constraintData)
+                    .onChange(of: constraint.rightConstraintEdge, perform: rightConstraintEdgeChanged)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
                 Spacer()
                     .frame(width: 1, height: 10)
@@ -161,10 +130,10 @@ public struct ContentView: View {
             .frame(minWidth: 50, maxWidth: 440, minHeight: 20, maxHeight: 22)
             
             Button {
-                bottomConstraintButtonPressed = !bottomConstraintButtonPressed
-                bottomConstraintButtonHandler(bottomConstraintButtonPressed)
+                constraint.bottomConstraintButtonPressed = !constraint.bottomConstraintButtonPressed
+                bottomConstraintButtonHandler(constraint.bottomConstraintButtonPressed)
             } label: {
-                if bottomConstraintButtonPressed {
+                if constraint.bottomConstraintButtonPressed {
                     verticalLineImage()
                 } else {
                     verticalLineImage()
@@ -174,12 +143,12 @@ public struct ContentView: View {
             
             VStack(alignment: .trailing) {
                 
-                SpacingView(value: $bottomConstraintValue, numeric: true, placeholder: "bottom", dropDownList: decimalData)
-                    .onChange(of: bottomConstraintValue, perform: bottomConstraintValueChanged)
-                SpacingView(value: $bottomConstraintView, numeric: false, placeholder: "view", dropDownList: viewData)
-                    .onChange(of: bottomConstraintView, perform: bottomConstraintViewChanged)
-                SpacingView(value: $bottomConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraintData)
-                    .onChange(of: bottomConstraintEdge, perform: bottomConstraintEdgeChanged)
+                SpacingView(value: $constraint.bottomConstraintValue, numeric: true, placeholder: "bottom", dropDownList: constraint.decimalData)
+                    .onChange(of: constraint.bottomConstraintValue, perform: bottomConstraintValueChanged)
+                SpacingView(value: $constraint.bottomConstraintView, numeric: false, placeholder: "view", dropDownList: constraint.viewData)
+                    .onChange(of: constraint.bottomConstraintView, perform: bottomConstraintViewChanged)
+                SpacingView(value: $constraint.bottomConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraint.constraintData)
+                    .onChange(of: constraint.bottomConstraintEdge, perform: bottomConstraintEdgeChanged)
                                
             }.frame(minWidth: 50, maxWidth: 70, minHeight: 20, maxHeight: 60)
         }
