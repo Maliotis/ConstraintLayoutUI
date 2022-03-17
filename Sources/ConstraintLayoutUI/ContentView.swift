@@ -80,9 +80,9 @@ public struct ContentView: View {
     public var paddingForHorizontalDropDowns: CGFloat = 3.5
     
     // data - overwrite the demo values
-    @State var constraintData: [String] = createConstraintData()
-    @State var viewData: [String] = createViewData()
-    @State var decimalData: [String] = createDecimalData()
+    @State public var constraintData: [String] = createConstraintData()
+    @State public var viewData: [String] = createViewData()
+    @State public var decimalData: [String] = createDecimalData()
     
     public var body: some View {
         VStack(alignment: .center, spacing: 2) {
