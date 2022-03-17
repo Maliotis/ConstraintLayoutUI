@@ -10,7 +10,7 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct ContentView: View {
     
-    @ObservedObject public var constraint: Constraint = Constraint()
+    @StateObject public var constraint: Constraint = Constraint()
         
     // Override this method to handle the buttons onClick
     public var topConstraintButtonHandler: (Bool) -> Void = {_ in }
@@ -175,12 +175,13 @@ public struct ContentView: View {
     }
 }
 
-@available(iOS 14.0.0, *)
+@available(iOS 14.0, *)
 struct ConstraintView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             if #available(iOS 15.0, *) {
                 ContentView()
+                    .environmentObject(Constraint())
                     .previewInterfaceOrientation(.landscapeLeft)
             } else {
                 // Fallback on earlier versions
