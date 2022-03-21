@@ -186,7 +186,7 @@ public struct ContentView: View {
 struct ConstraintView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            //ContentView()
 //                    .environmentObject(Constraint())
 //                    .previewInterfaceOrientation(.landscapeLeft)
         }
