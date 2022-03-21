@@ -179,14 +179,9 @@ public struct ContentView: View {
 struct ConstraintView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            if #available(iOS 15.0, *) {
-                ContentView()
-                    .environmentObject(Constraint())
-                    .previewInterfaceOrientation(.landscapeLeft)
-            } else {
-                // Fallback on earlier versions
-            }
             ContentView()
+//                    .environmentObject(Constraint())
+//                    .previewInterfaceOrientation(.landscapeLeft)
         }
     }
 }
