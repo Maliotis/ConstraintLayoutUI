@@ -10,7 +10,11 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct ContentView: View {
     
-    @StateObject public var constraint: Constraint = Constraint()
+    init(constraint: Constraint) {
+        self.constraint = constraint
+    }
+    
+    @ObservedObject public var constraint: Constraint
         
     // Override this method to handle the buttons onClick
     public var topConstraintButtonHandler: (Bool) -> Void = {_ in }
