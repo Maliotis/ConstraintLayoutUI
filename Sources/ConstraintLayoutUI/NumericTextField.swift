@@ -18,9 +18,12 @@ struct NumericTextField: View {
             .keyboardType(.decimalPad)
             .onReceive(Just(value)) { newValue in
                 if newValue.isNumeric {
-                    self.value = newValue
+                    if self.value != newValue {
+                        self.value = newValue
+                    }
                 } else {
                     self.value = String(self.value.dropLast())
+                    
                 }
             }
     }
