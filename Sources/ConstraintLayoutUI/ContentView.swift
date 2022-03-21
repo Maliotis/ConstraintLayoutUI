@@ -62,11 +62,11 @@ public struct ContentView: View {
             
             VStack(alignment: .trailing) {
                 SpacingView(value: $constraint.topConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraint.constraintData)
-                    //.onChange(of: constraint.topConstraintEdge, perform: topConstraintEdgeChanged)
+                    .onChange(of: constraint.topConstraintEdge, perform: topConstraintEdgeChanged)
                 SpacingView(value: $constraint.topConstraintView, numeric: false, placeholder: "view", dropDownList: constraint.viewData)
-                    //.onChange(of: constraint.topConstraintView, perform: topConstraintViewChanged)
+                    .onChange(of: constraint.topConstraintView, perform: topConstraintViewChanged)
                 SpacingView(value: $constraint.topConstraintValue, numeric: true, placeholder: "Top", dropDownList: constraint.decimalData)
-                    //.onChange(of: constraint.topConstraintValue, perform: topConstraintValueChanged)
+                    .onChange(of: constraint.topConstraintValue, perform: topConstraintValueChanged)
                 
             }.frame(minWidth: 50, maxWidth: 70, minHeight: 20, maxHeight: 60)
             
@@ -85,13 +85,13 @@ public struct ContentView: View {
             HStack(alignment: .center, spacing: 2) {
 //                Spacer(minLength: 4)
                 SpacingView(value: $constraint.leftConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraint.constraintData)
-                    //.onChange(of: constraint.leftConstraintEdge, perform: leftConstraintEdgeChanged)
+                    .onChange(of: constraint.leftConstraintEdge, perform: leftConstraintEdgeChanged)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
                 SpacingView(value: $constraint.leftConstraintView, numeric: false, placeholder: "view", dropDownList: constraint.viewData)
-                    //.onChange(of: constraint.leftConstraintView, perform: leftConstraintViewChanged)
+                    .onChange(of: constraint.leftConstraintView, perform: leftConstraintViewChanged)
                     .padding([.leading], paddingForHorizontalDropDowns)
                 SpacingView(value: $constraint.leftConstraintValue, numeric: true, placeholder: "left", dropDownList: constraint.decimalData)
-                    //.onChange(of: constraint.leftConstraintValue, perform: leftConstraintValueChanged)
+                    .onChange(of: constraint.leftConstraintValue, perform: leftConstraintValueChanged)
                     .padding(.trailing, 7)
                 Button {
                     constraint.leftConstraintButtonPressed = !constraint.leftConstraintButtonPressed
@@ -120,14 +120,14 @@ public struct ContentView: View {
                 }
                 
                 SpacingView(value: $constraint.rightConstraintValue, numeric: true, placeholder: "right", dropDownList: constraint.decimalData)
-                    //.onChange(of: constraint.rightConstraintValue, perform: rightConstraintValueChanged)
+                    .onChange(of: constraint.rightConstraintValue, perform: rightConstraintValueChanged)
                 
                 SpacingView(value: $constraint.rightConstraintView, numeric: false, placeholder: "view", dropDownList: constraint.viewData)
-                    //.onChange(of: constraint.rightConstraintView, perform: rightConstraintViewChanged)
+                    .onChange(of: constraint.rightConstraintView, perform: rightConstraintViewChanged)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
                 
                 SpacingView(value: $constraint.rightConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraint.constraintData)
-                    //.onChange(of: constraint.rightConstraintEdge, perform: rightConstraintEdgeChanged)
+                    .onChange(of: constraint.rightConstraintEdge, perform: rightConstraintEdgeChanged)
                     .padding([.leading, .trailing], paddingForHorizontalDropDowns)
                 Spacer()
                     .frame(width: 1, height: 10)
@@ -151,11 +151,11 @@ public struct ContentView: View {
             VStack(alignment: .trailing) {
                 
                 SpacingView(value: $constraint.bottomConstraintValue, numeric: true, placeholder: "bottom", dropDownList: constraint.decimalData)
-                    //.onChange(of: constraint.bottomConstraintValue, perform: bottomConstraintValueChanged)
+                    .onChange(of: constraint.bottomConstraintValue, perform: bottomConstraintValueChanged)
                 SpacingView(value: $constraint.bottomConstraintView, numeric: false, placeholder: "view", dropDownList: constraint.viewData)
-                    //.onChange(of: constraint.bottomConstraintView, perform: bottomConstraintViewChanged)
+                    .onChange(of: constraint.bottomConstraintView, perform: bottomConstraintViewChanged)
                 SpacingView(value: $constraint.bottomConstraintEdge, numeric: false, placeholder: "constraint", dropDownList: constraint.constraintData)
-                    //.onChange(of: constraint.bottomConstraintEdge, perform: bottomConstraintEdgeChanged)
+                    .onChange(of: constraint.bottomConstraintEdge, perform: bottomConstraintEdgeChanged)
                                
             }.frame(minWidth: 50, maxWidth: 70, minHeight: 20, maxHeight: 60)
         }
